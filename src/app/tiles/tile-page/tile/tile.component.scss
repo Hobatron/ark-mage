@@ -1,0 +1,36 @@
+@import "../hex-vars.scss";
+
+.hex1 {
+	position: relative;
+}
+.hex2 {
+	position: relative;
+	top: -$hexagonHeight / 2;
+	left: $hexagonTotalWidth / 2 + $hexagonSideLength / 2 - $hexagonBorder;
+}
+.hex3 {
+	position: relative;
+	top: -$hexagonHeight - $hexagonBorder;
+}
+.hex4 {
+	position: relative;
+	top: -$hexagonHeight / 2 + -$hexagonHeight * 2 - $hexagonBorder;
+	right: $hexagonTotalWidth / 2 + $hexagonSideLength / 2 - $hexagonBorder;
+}
+
+//This clip path is not perfect. Trying to figure out what it should be has been hard. For now, I'm leaving it.
+.hexes {
+	display: grid;
+	margin: auto;
+	width: fit-content;
+	background: black;
+	border: $hexagonBorder solid black;
+	-webkit-clip-path: polygon(
+		0% 50%,
+		25% 0%,
+		75% 0%,
+		100% 50%,
+		75% 100%,
+		25% 100%
+	);
+}
