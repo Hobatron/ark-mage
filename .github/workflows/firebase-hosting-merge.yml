@@ -2,7 +2,7 @@
 # https://github.com/firebase/firebase-tools
 
 name: Deploy to Firebase Hosting on merge
-'on':
+"on":
     push:
         branches:
             - master
@@ -15,7 +15,7 @@ jobs:
             - name: Set up Node.js version
               uses: actions/setup-node@v1
               with:
-                  node-version: '18.x'
+                  node-version: "18.x"
 
             - name: npm install, build, and test
               run: |
@@ -25,8 +25,7 @@ jobs:
             - name: Deploy to Firebase
               uses: FirebaseExtended/action-hosting-deploy@v0
               with:
-                  repoToken: '${{ secrets.GITHUB_TOKEN }}'
-                  firebaseServiceAccount:
-                      '${{ secrets.FIREBASE_SERVICE_ACCOUNT_SIGNS_BY_PAM }}'
+                  repoToken: "${{ secrets.GITHUB_TOKEN }}"
+                  firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_ARK_MAGE }}"
                   channelId: live
                   projectId: ark-mage-a-new-dawn
