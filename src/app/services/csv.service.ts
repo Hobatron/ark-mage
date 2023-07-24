@@ -155,8 +155,8 @@ export class CsvService {
 	}
 
 	localEquipmentCsv = `Text,Cost
-	[Passive] | Stun Powder | Whenever you Attack and deal 3 or less damage: You may spend {Gem:R} to stun your target.,{Gold:2}
-[Passive] |Liquid Shield| +1 Armor :N When an opponent rolls one or more {Dice:Crit} while attacking you - you may spend {Gem:R} to turn one into {Dice:Miss}. (This does not cause Ranged Attacks to fail.),{Gold:5}
+[Passive] | Stun Powder | Whenever you Attack and deal 3 or less damage: You may spend {Gem:R} to stun your target.,{Gold:2}
+[Passive] |Liquid Shield|+1 Armor :N When an opponent rolls one or more {Dice:Crit} while attacking you - you may spend {Gem:R} to turn one into {Dice:Miss}. (This does not cause Ranged Attacks to fail.),{Gold:5}
 [Passive] |Spike Armor| +1 Armor. :N When you roll one or more {Dice:!} - Deal 1 damage to an enemy within range 1.,{Gold:6}
 [Passive] |Anklets of The Wind| +1 Move. :N When you roll one or more {Dice:!} you may use it to Move 1,{Gold:3}
 [Passive] |Sure-Footed Greaves| +1 Move. :N When you roll {Dice:!} you may spend one to put a +1 Counter on one of your Action Cards.,{Gold:4}
@@ -276,15 +276,13 @@ export class CsvService {
 	[Trigger] | Private Auction | Discard after a player Crafts an equipment. Discard and replace any number of cards from the Equipment Market. Then Reserve 1 Equipment.`;
 
 	localActionsCsv = `rules,
-[Craft/Trade] Craft: Craft up to one item from the market. Cost is reduced by Slot Level. Level 4+: You may discard and replace any number of market items before crafting. :N:N Trade: Gain 0/1/1/2 {Gem:R} based on Slot Level 1/2/3/4+. Then you may sell Gems to Gain 2 {Gold:} or Draw 1 Consumable Card for each gem.
-[Move] Gain Slot Level movement points. You may spend 1 movement point to move across one border or explore 1 new tile which must border the space you are in.
-[Discover/Use] Discover: Look at the top Slot Level cards of the Consumable deck. Keep one. Discard the others. If you are on a Scrap Pile keep up to two instead and use it up. :N:N Use: Play a One Use Consumable card from your hand.
-[Attack/Mine] Attack: Target an enemy range one away. Roll Slot Level dice. Deal damage equal to the number of {Dice:Hit} to your target. :N:N Mine: Gain Slot Level {Gold:}. If you are on a Rich Mine\\\, also roll three dice. Gain {Gold} for each {Dice:Hit}. Gain {Gem:R} for each {Dice:!}
-[Melee Attack/Prepare] Melee Attack: Gain 1 movement point. Target an enemy range one away. Roll Slot Level dice. Deal damage equal to the number of {Dice:Hit} to your target. :N:N Prepare: Gain Slot Level and distribute them amongst your action cards. Maximum of two can be on each card.
-[Move] Move: Gain Slot Level movement points. You may spend 1 movement point to move across one border or explore 1 new tile which must border the space you are in.
-[Discover/Use] Discover: Look at the top Slot Level cards of the Consumable deck. Keep one. Discard the others. If you are on a Scrap Pile keep up to two instead and use it up. :N:N Use: Play a One Use Consumable card from your hand.
-[Ranged Attack/Trade] Ranged Attack: Target an enemy range Slot Level away. Roll up to Slot Level dice. Deal damage equal to the number of {Dice:Hit} +1. If you roll any {Dice:Miss}\\\, deal 0 damage instead. :N:N Trade: Gain 0/1/1/2 {Gem:R} based on Slot Level 1/2/3/4+. Then you may sell Gems to Gain 2 {Gold:} or Draw 1 Consumable Card for each gem.
-[Craft/Mine] Craft: Craft up to one item from the market. Cost is reduced by Slot Level. Level 4+: You may discard and replace any number of market items before crafting. :N:N Mine: Mine only on a Rich Vein: Roll Slot Level dice. Gain {Gold:} for each {Dice:Hit}. Gain {Gem:R} for each {Dice:!}`;
+	[Craft/Trade] Craft: Craft up to one item from the market. Cost is reduced by Slot Level. Level 4+: You may discard and replace any number of market items before crafting. :N:N Trade: Gain 0/1/1/2 {Gem:R} based on Slot Level 1/2/3/4+. Then you may sell Gems to Gain 2 Gold or Draw 1 Consumable Card for each gem. ,
+	[Move] Gain Slot Level movement points. You may spend 1 movement point to move across one border or explore 1 new tile which must border the space you are in. ,
+	[Discover/Use]  Discover  Look at the top Slot Level cards of the Consumable deck. Keep one. Discard the others. If you are on a Scrap Pile keep up to two instead and use it up. :N  Use  Play a One Use Consumable card from your hand. ,
+	[Attack/Mine]  Attack  Target an enemy range one away. Roll Slot Level dice. Deal damage equal to the number of {Dice:Hit} to your target. :N  Mine  Gain Slot Level {Gold:1}. If you are on a Rich Mine: also roll three dice. Gain {Gold:1} for each {Dice:Hit}. Gain {Gem:R} for each {Dice:!} ,
+	[Melee Attack/Prepare]  Melee Attack  Move 1. Target an enemy range one away. Roll Slot Level dice. Deal damage equal to the number of {Dice:Hit} to your target. :N Prepare  Gain Slot Level-1 +1 Tokens and distribute them amongst your action cards. Maximum of two can be on each card. ,
+	[Ranged Attack/Trade]  Ranged Attack  Range 3. Roll up to Slot Level dice. Deal damage equal to the number of {Dice:Hit} +1. If you roll any {Dice:Miss}: Deal 0 damage instead. You may spend any number of {Gem:R} before rolling to ignore 1 {Dice:Miss} for each. :N  Trade  Gain  0/1/1/2 {Gem:R} for Slot Level 1/2/3/4+. Then you may sell Gems to Gain 2 Gold or Draw 1 Consumable Card for each gem. ,
+	[Craft/Mine]  Craft  Craft up to one item from the market. Cost is reduced by Slot Level. Level 5+: You may discard and replace any number of market items before crafting. :N  Mine  Move 1. Then if you are on a Rich Vein: Roll Slot Level+2 dice. Gain {Gold:1} for each {Dice:Hit}. Gain {Gem:R} for each {Dice:!} ,`;
 }
 
 export interface Icon {

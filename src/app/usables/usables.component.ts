@@ -13,6 +13,7 @@ export class UsablesComponent implements OnInit {
 	public loadedUsables$: Observable<Usable[][]> | undefined;
 	public cardConst: CardConstants = new CardConstants();
 	public sheetStyle = {
+		padding: '126.5px 180px', //lets you print on normal print paper
 		//this margin is oddly needed, to offset the image generated via the htmlToImage package
 		margin: ((1 - 0.92) / 2) * this.cardConst.width + 'px', //92%: this number must match throughout search the project for this comment for refrences
 		width:
