@@ -1,5 +1,5 @@
 import { Injectable, inject } from '@angular/core';
-import { Observable, map } from 'rxjs';
+import { Observable, map, take } from 'rxjs';
 import { Mapper } from '../mappers/mapper';
 import { CardConstants } from '../mainVariables';
 
@@ -9,6 +9,8 @@ import {
 	collection,
 	addDoc,
 	CollectionReference,
+	query,
+	where,
 } from '@angular/fire/firestore';
 
 @Injectable({
@@ -44,6 +46,7 @@ export class FbWrapperService {
 	getUsableSheets(): Observable<Usable[][]> {
 		return collectionData(this.usablesCollection).pipe(
 			map((e) => {
+				console.log(e);
 				return this.toSheets(e);
 			})
 		);
@@ -51,17 +54,27 @@ export class FbWrapperService {
 
 	getActionSheets(): Observable<Action[][]> {
 		return collectionData(this.actionsCollection).pipe(
-			map((e) => this.toSheets(e))
+			map((e) => {
+				console.log(e);
+				return this.toSheets(e);
+			})
 		);
 	}
 	getEquipmentSheets(): Observable<Equipment[][]> {
 		return collectionData(this.equipmentsCollection).pipe(
-			map((e) => this.toSheets(e))
+			map((e) => {
+				console.log(e);
+				return this.toSheets(e);
+			})
 		);
 	}
 
-	public post<T>(collection: CollectionReference<T>, card: T): void {
+	public createCard<T>(collection: CollectionReference<T>, card: T): void {
 		addDoc(collection, card);
+	}
+
+	public async updateCard(card: Equipment) {
+		const q = query(this.equipmentsCollection, where('id', '==', card.id));
 	}
 
 	toSheets<T>(arr: T[]): T[][] {
@@ -79,6 +92,7 @@ export interface Icon {
 }
 
 export interface Equipment {
+	id: number;
 	cost: Icon[];
 	name: string;
 	type: string;
@@ -86,6 +100,7 @@ export interface Equipment {
 }
 
 export interface Usable {
+	id: number;
 	name: string;
 	slot: Icon[];
 	type: string;
@@ -93,6 +108,7 @@ export interface Usable {
 }
 
 export interface Action {
+	id: number;
 	type: string;
 	rules: string;
 }

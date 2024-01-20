@@ -26,11 +26,6 @@ export class EquipmentComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.loadedEquipment$ = this.csvService.equipments$;
-		this.csvService.equipments$?.subscribe((v) => {
-			if (v) {
-				//setTimeout(this.appendImage, 200)
-			}
-		});
 	}
 
 	appendImage() {

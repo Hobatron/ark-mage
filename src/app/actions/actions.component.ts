@@ -25,10 +25,5 @@ export class ActionsComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.actions$ = this.csvService.actions$;
-		this.csvService.equipments$?.subscribe((v) => {
-			if (v) {
-				//setTimeout(this.appendImage, 200)
-			}
-		});
 	}
 }
