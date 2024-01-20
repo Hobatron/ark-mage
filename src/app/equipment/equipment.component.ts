@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { CsvService, Equipment } from '../services/csv.service';
+import { FbWrapperService, Equipment } from '../services/fb-wrapper.service';
 import { CardConstants } from '../mainVariables';
 import html2canvas from 'html2canvas';
 
@@ -22,7 +22,7 @@ export class EquipmentComponent implements OnInit {
 		'grid-template-columns': `${'1fr '.repeat(this.cardConst.cols)}`,
 		gap: '0px 0px',
 	};
-	constructor(private csvService: CsvService) {}
+	constructor(private csvService: FbWrapperService) {}
 
 	ngOnInit(): void {
 		this.loadedEquipment$ = this.csvService.equipments$;

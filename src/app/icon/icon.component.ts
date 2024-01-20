@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Icon } from '../services/csv.service';
+import { Icon } from '../services/fb-wrapper.service';
 
 interface CharColor {
 	char?: string;

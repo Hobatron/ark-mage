@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CardMainComponent } from './card-main/card-main.component';
 import { EquipmentComponent } from './equipment/equipment.component';
-import { CsvService } from './services/csv.service';
+import { FbWrapperService } from './services/fb-wrapper.service';
 import { UsablesComponent } from './usables/usables.component';
 import { IconComponent } from './icon/icon.component';
 import { RulesTextComponent } from './rules-text/rules-text.component';
@@ -57,7 +57,7 @@ const firebaseConfig = {
 		provideFirebaseApp(() => initializeApp(firebaseConfig)),
 		provideFirestore(() => getFirestore()),
 	],
-	providers: [CsvService],
+	providers: [FbWrapperService],
 	bootstrap: [AppComponent],
 })
 export class AppModule {}

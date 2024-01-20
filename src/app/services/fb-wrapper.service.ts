@@ -1,5 +1,5 @@
 import { Injectable, inject } from '@angular/core';
-import { Observable, map, of, tap } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { Mapper } from '../mappers/mapper';
 import { CardConstants } from '../mainVariables';
 
@@ -9,16 +9,12 @@ import {
 	collection,
 	addDoc,
 	CollectionReference,
-	deleteDoc,
-	writeBatch,
-	DocumentReference,
-	doc,
 } from '@angular/fire/firestore';
 
 @Injectable({
 	providedIn: 'root',
 })
-export class CsvService {
+export class FbWrapperService {
 	firestore: Firestore = inject(Firestore);
 
 	public cardConst: CardConstants = new CardConstants();

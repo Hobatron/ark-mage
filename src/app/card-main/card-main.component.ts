@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CardConstants } from '../mainVariables';
-import { Icon } from '../services/csv.service';
+import { Icon } from '../services/fb-wrapper.service';
 
 @Component({
 	selector: 'app-card-main',

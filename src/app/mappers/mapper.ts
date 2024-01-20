@@ -1,4 +1,4 @@
-import { Icon } from '../services/csv.service';
+import { Icon } from '../services/fb-wrapper.service';
 
 export class Mapper {
 	cost(col: string): Icon[] {

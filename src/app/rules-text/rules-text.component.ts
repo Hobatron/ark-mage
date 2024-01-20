@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Mapper } from '../mappers/mapper';
-import { Icon } from '../services/csv.service';
+import { Icon } from '../services/fb-wrapper.service';
 
 @Component({
 	selector: 'app-rules-text',

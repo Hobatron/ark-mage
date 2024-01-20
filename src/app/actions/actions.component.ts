@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CardConstants } from '../mainVariables';
-import { Action, CsvService } from '../services/csv.service';
+import { Action, FbWrapperService } from '../services/fb-wrapper.service';
 
 @Component({
 	selector: 'app-actions',
@@ -21,7 +21,7 @@ export class ActionsComponent implements OnInit {
 		'grid-template-columns': `${'1fr '.repeat(this.cardConst.cols)}`,
 		gap: '0px 0px',
 	};
-	constructor(private csvService: CsvService) {}
+	constructor(private csvService: FbWrapperService) {}
 
 	ngOnInit(): void {
 		this.actions$ = this.csvService.actions$;
