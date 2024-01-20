@@ -20,6 +20,18 @@ import { MineSvgComponent } from './svgs/mine-svg/mine-svg.component';
 import { HealSvgComponent } from './svgs/heal-svg/heal-svg.component';
 import { ActionsComponent } from './actions/actions.component';
 
+import { provideFirebaseApp, getApp, initializeApp } from '@angular/fire/app';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+
+const firebaseConfig = {
+	apiKey: 'AIzaSyAylE6H4uUaW4RRzQgjJidn9GsfCBRPTFs',
+	authDomain: 'ark-mage-a-new-dawn.firebaseapp.com',
+	projectId: 'ark-mage-a-new-dawn',
+	storageBucket: 'ark-mage-a-new-dawn.appspot.com',
+	messagingSenderId: '377004910380',
+	appId: '1:377004910380:web:28b7cc3c8012928c55ee89',
+};
+
 @NgModule({
 	declarations: [
 		AppComponent,
@@ -32,14 +44,19 @@ import { ActionsComponent } from './actions/actions.component';
 		HexComponent,
 		TileComponent,
 		TilePageComponent,
-  FightSvgComponent,
-  GemSvgComponent,
-  DiscoverSvgComponent,
-  MineSvgComponent,
-  HealSvgComponent,
-  ActionsComponent,
+		FightSvgComponent,
+		GemSvgComponent,
+		DiscoverSvgComponent,
+		MineSvgComponent,
+		HealSvgComponent,
+		ActionsComponent,
 	],
-	imports: [BrowserModule, AppRoutingModule],
+	imports: [
+		BrowserModule,
+		AppRoutingModule,
+		provideFirebaseApp(() => initializeApp(firebaseConfig)),
+		provideFirestore(() => getFirestore()),
+	],
 	providers: [CsvService],
 	bootstrap: [AppComponent],
 })

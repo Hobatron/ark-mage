@@ -17,11 +17,11 @@ export class CardMainComponent implements OnInit {
 		display: 'grid',
 		margin: this.cardConsts.cardSpacing + 'px',
 	};
-	@Input() public type?: string;
-	@Input() public costs?: Icon[];
-	@Input() public name?: string;
-	@Input() public rules?: string;
-	@Input() public isAction?: boolean = false;
+	@Input() public type: string = '';
+	@Input() public costs: Icon[] = [];
+	@Input() public name: string = '';
+	@Input() public rules: string = '';
+	@Input() public isAction: boolean = false;
 
 	constructor() {}
 
