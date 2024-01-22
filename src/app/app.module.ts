@@ -20,7 +20,7 @@ import { MineSvgComponent } from './svgs/mine-svg/mine-svg.component';
 import { HealSvgComponent } from './svgs/heal-svg/heal-svg.component';
 import { ActionsComponent } from './actions/actions.component';
 
-import { provideFirebaseApp, getApp, initializeApp } from '@angular/fire/app';
+import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 
 const firebaseConfig = {

@@ -4,6 +4,17 @@
 	border-bottom: 1px solid black;
 }
 
+.edit-icon {
+	visibility: hidden;
+	position: absolute;
+	color: rgba(0, 0, 0, 0.603);
+}
+.trash-icon {
+	float: right;
+	visibility: hidden;
+	color: rgba(0, 0, 0, 0.603);
+}
+
 .inner-type {
 	padding: 0;
 }
@@ -37,4 +48,9 @@
 	width: 82%; //92%: this number must match throughout search the project for this comment for refrences
 	padding: 5%; //10%: this count's 2x it's value (padding on both sides, sides and top/bottom)
 	margin: auto;
+}
+
+.inner-card:hover .edit-icon,
+.inner-card:hover .trash-icon {
+	visibility: visible;
 }
