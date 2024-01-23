@@ -1,7 +1,9 @@
 <div [ngStyle]="this.cardStyle">
 	<div class="inner-card">
-		<i class="fas fa-edit edit-icon"></i>
-		<i class="fa-solid fa-trash trash-icon"></i>
+		<div *ngIf="!this.isEdit">
+			<i class="fas fa-edit edit-icon" (click)="openDialog()"></i>
+			<i class="fa-solid fa-trash trash-icon"></i>
+		</div>
 		<div class="spacing">
 			<div *ngIf="this.type; else noType" class="type">
 				{{ this.type }}

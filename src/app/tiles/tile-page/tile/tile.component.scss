@@ -1,3 +1,4 @@
+@use "sass:math";
 @import "../hex-vars.scss";
 
 .hex1 {
@@ -5,8 +6,11 @@
 }
 .hex2 {
 	position: relative;
-	top: -$hexagonHeight / 2;
-	left: $hexagonTotalWidth / 2 + $hexagonSideLength / 2 - $hexagonBorder;
+	top: math.div(-$hexagonHeight, 2);
+	left: calc(
+		math.div($hexagonTotalWidth, 2) + math.div($hexagonSideLength, 2) -
+			$hexagonBorder
+	);
 }
 .hex3 {
 	position: relative;
@@ -14,8 +18,13 @@
 }
 .hex4 {
 	position: relative;
-	top: -$hexagonHeight / 2 + -$hexagonHeight * 2 - $hexagonBorder;
-	right: $hexagonTotalWidth / 2 + $hexagonSideLength / 2 - $hexagonBorder;
+	top: calc(
+		math.div(-$hexagonHeight, 2) - $hexagonHeight * 2 - $hexagonBorder
+	);
+	right: calc(
+		math.div($hexagonTotalWidth, 2) + math.div($hexagonSideLength, 2) -
+			$hexagonBorder
+	);
 }
 
 //This clip path is not perfect. Trying to figure out what it should be has been hard. For now, I'm leaving it.

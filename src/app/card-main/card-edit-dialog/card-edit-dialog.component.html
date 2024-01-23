@@ -1,0 +1,56 @@
+<div class="card-edit-container">
+	<app-card-main
+		[isEdit]="true"
+		[costs]="this.form.controls.cost.value"
+		[name]="this.form.controls.name.value"
+		[rules]="this.form.controls.rules.value"
+		[type]="this.form.controls.type.value"
+		[cardType]="this.cardType"
+	>
+	</app-card-main>
+	<form [formGroup]="form" class="form" (ngSubmit)="onSave()">
+		<mat-form-field>
+			<mat-label>ID</mat-label>
+			<input
+				matInput
+				[readonly]="true"
+				[formControl]="this.form.controls.id"
+			/>
+		</mat-form-field>
+
+		<div *ngFor="let cost of this.form.controls.cost.controls">
+			<mat-form-field>
+				<mat-label>Cost/Slot</mat-label>
+				<input matInput [formControl]="cost" />
+			</mat-form-field>
+		</div>
+		<mat-form-field>
+			<mat-label>Name</mat-label>
+			<input matInput [formControl]="this.form.controls.name" />
+		</mat-form-field>
+		<mat-form-field>
+			<mat-label>Type</mat-label>
+			<input matInput [formControl]="this.form.controls.type" />
+		</mat-form-field>
+		<mat-form-field>
+			<mat-label>Rules</mat-label>
+			<textarea
+				matInput
+				cdkTextareaAutosize
+				#autosize="cdkTextareaAutosize"
+				cdkAutosizeMinRows="1"
+				[formControl]="this.form.controls.rules"
+			></textarea>
+		</mat-form-field>
+		<button mat-raised-button color="accent" type="submit">Save</button>
+		<br />
+		<button
+			mat-raised-button
+			color="primary"
+			type="button"
+			(click)="cancel()"
+		>
+			Cancel
+		</button>
+	</form>
+</div>

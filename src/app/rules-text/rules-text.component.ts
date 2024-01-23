@@ -1,4 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {
+	Component,
+	Input,
+	OnChanges,
+	OnInit,
+	SimpleChanges,
+} from '@angular/core';
 import { Mapper } from '../mappers/mapper';
 import { Icon } from '../services/fb-wrapper.service';
 
@@ -7,7 +13,7 @@ import { Icon } from '../services/fb-wrapper.service';
 	templateUrl: './rules-text.component.html',
 	styleUrls: ['./rules-text.component.scss'],
 })
-export class RulesTextComponent implements OnInit {
+export class RulesTextComponent implements OnChanges {
 	@Input() rules?: string;
 	@Input() fontSize!: number;
 
@@ -18,9 +24,12 @@ export class RulesTextComponent implements OnInit {
 
 	constructor() {}
 
-	ngOnInit(): void {
-		let logging = this.rules?.includes('xxx');
+	ngOnChanges(changes: SimpleChanges): void {
+		this.calcSplitRules();
+	}
 
+	private calcSplitRules(): void {
+		this.resourceCosts = [];
 		if (!this.rules) {
 			this.rules = '';
 		}
@@ -35,8 +44,5 @@ export class RulesTextComponent implements OnInit {
 		this.splitRules.forEach((r, i) => {
 			this.splitRules[i] = r.replace(/:N/g, '<br>');
 		});
-		if (logging) {
-			console.log(this.splitRules);
-		}
 	}
 }

@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CardConstants } from '../mainVariables';
-import { Action, FbWrapperService } from '../services/fb-wrapper.service';
+import {
+	Action,
+	CardType,
+	FbWrapperService,
+} from '../services/fb-wrapper.service';
 
 @Component({
 	selector: 'app-actions',
@@ -11,6 +15,7 @@ import { Action, FbWrapperService } from '../services/fb-wrapper.service';
 export class ActionsComponent implements OnInit {
 	public actions$: Observable<Action[][]> | undefined;
 	public cardConst: CardConstants = new CardConstants();
+	public CardType = CardType;
 	public sheetStyle = {
 		padding: '126.5px 180px', //lets you print on normal print paper
 		width:

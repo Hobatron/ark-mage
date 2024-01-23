@@ -7,10 +7,11 @@ Make sure zoom is set to 100%, as it affects the image size
 		id="image-section"
 	>
 		<app-card-main
-			*ngFor="let actions of actionsSheet"
-			[isAction]="true"
-			[type]="actions.type"
-			[rules]="actions.rules"
+			*ngFor="let action of actionsSheet"
+			[type]="action.type"
+			[rules]="action.rules"
+			[cardType]="CardType.ACTION"
+			[id]="action.id"
 		>
 		</app-card-main>
 	</div>

@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { FbWrapperService, Usable } from '../services/fb-wrapper.service';
+import {
+	CardType,
+	FbWrapperService,
+	Usable,
+} from '../services/fb-wrapper.service';
 import { CardConstants } from '../mainVariables';
 import * as htmlToImage from 'html-to-image';
 
@@ -24,6 +28,7 @@ export class UsablesComponent implements OnInit {
 		'grid-template-columns': `${'1fr '.repeat(this.cardConst.cols)}`,
 		gap: '0px 0px',
 	};
+	public CardType = CardType;
 	constructor(private csvService: FbWrapperService) {}
 
 	ngOnInit(): void {

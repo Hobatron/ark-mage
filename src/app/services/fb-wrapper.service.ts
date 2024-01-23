@@ -1,5 +1,5 @@
-import { Injectable, inject } from '@angular/core';
-import { Observable, map, take } from 'rxjs';
+import { inject } from '@angular/core';
+import { Observable, map } from 'rxjs';
 import { Mapper } from '../mappers/mapper';
 import { CardConstants } from '../mainVariables';
 
@@ -11,11 +11,10 @@ import {
 	CollectionReference,
 	query,
 	where,
+	getDocs,
+	updateDoc,
 } from '@angular/fire/firestore';
 
-@Injectable({
-	providedIn: 'root',
-})
 export class FbWrapperService {
 	firestore: Firestore = inject(Firestore);
 
@@ -73,8 +72,21 @@ export class FbWrapperService {
 		addDoc(collection, card);
 	}
 
-	public async updateCard(card: Equipment) {
-		const q = query(this.equipmentsCollection, where('id', '==', card.id));
+	public postCard(cardType: CardType, card: any): void {
+		switch (cardType) {
+			case CardType.ACTION:
+				this.postAction(card);
+				break;
+			case CardType.EQUIPMENT:
+				this.postEquipment(card);
+				break;
+			case CardType.USABLE:
+				this.postUsables(card);
+				break;
+			default:
+				throw Error('Card type not recognized: ' + cardType);
+		}
+		// const q = query(this.equipmentsCollection, where('id', '==', card.id));
 	}
 
 	toSheets<T>(arr: T[]): T[][] {
@@ -84,11 +96,64 @@ export class FbWrapperService {
 		}
 		return chunks;
 	}
+
+	private async postAction(card: any) {
+		const actionCard = {
+			id: card.id,
+			type: card.type,
+			rules: card.rules,
+		} as Action;
+		const q = query(
+			this.actionsCollection,
+			where('id', '==', actionCard.id)
+		);
+		getDocs(q).then((r) => {
+			updateDoc(r.docs[0].ref, actionCard);
+		});
+	}
+	private postEquipment(card: any): void {
+		const equipmentCard = {
+			id: card.id,
+			cost: card.cost,
+			name: card.name,
+			rules: card.rules,
+			type: card.type,
+		} as Equipment;
+		const q = query(
+			this.equipmentsCollection,
+			where('id', '==', equipmentCard.id)
+		);
+		getDocs(q).then((r) => {
+			updateDoc(r.docs[0].ref, equipmentCard);
+		});
+	}
+	private postUsables(card: any): void {
+		const usableCard = {
+			id: card.id,
+			slot: card.cost,
+			name: card.name,
+			rules: card.rules,
+			type: card.type,
+		} as Usable;
+		const q = query(
+			this.usablesCollection,
+			where('id', '==', usableCard.id)
+		);
+		getDocs(q).then((r) => {
+			updateDoc(r.docs[0].ref, usableCard);
+		});
+	}
 }
 
 export interface Icon {
 	type: 'gem' | 'gold' | 'slot level' | 'dice';
 	value: string;
+}
+
+export enum CardType {
+	ACTION = 'action',
+	EQUIPMENT = 'equipment',
+	USABLE = 'usable',
 }
 
 export interface Equipment {

@@ -1,6 +1,3 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CardMainComponent } from './card-main/card-main.component';
@@ -19,9 +16,23 @@ import { DiscoverSvgComponent } from './svgs/discover-svg/discover-svg.component
 import { MineSvgComponent } from './svgs/mine-svg/mine-svg.component';
 import { HealSvgComponent } from './svgs/heal-svg/heal-svg.component';
 import { ActionsComponent } from './actions/actions.component';
+import { CardEditDialogComponent } from './card-main/card-edit-dialog/card-edit-dialog.component';
 
+//**Angular/Firebase**
 import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+
+//**AngularMaterial**
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+
+//**Angular**
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TextFieldModule } from '@angular/cdk/text-field';
 
 const firebaseConfig = {
 	apiKey: 'AIzaSyAylE6H4uUaW4RRzQgjJidn9GsfCBRPTFs',
@@ -50,14 +61,22 @@ const firebaseConfig = {
 		MineSvgComponent,
 		HealSvgComponent,
 		ActionsComponent,
+		CardEditDialogComponent,
 	],
 	imports: [
 		BrowserModule,
 		AppRoutingModule,
 		provideFirebaseApp(() => initializeApp(firebaseConfig)),
 		provideFirestore(() => getFirestore()),
+		MatDialogModule,
+		ReactiveFormsModule,
+		MatInputModule,
+		BrowserAnimationsModule,
+		TextFieldModule,
+		MatButtonModule,
 	],
 	providers: [FbWrapperService],
 	bootstrap: [AppComponent],
+	exports: [CardMainComponent],
 })
 export class AppModule {}
