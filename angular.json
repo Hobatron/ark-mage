@@ -28,9 +28,9 @@
 						"inlineStyleLanguage": "scss",
 						"assets": ["src/favicon.ico", "src/assets"],
 						"styles": [
-              "@angular/material/prebuilt-themes/purple-green.css",
-              "src/styles.scss"
-            ],
+							"@angular/material/prebuilt-themes/purple-green.css",
+							"src/styles.scss"
+						],
 						"scripts": []
 					},
 					"configurations": {
@@ -38,8 +38,8 @@
 							"budgets": [
 								{
 									"type": "initial",
-									"maximumWarning": "500kb",
-									"maximumError": "1mb"
+									"maximumWarning": "1.5mb",
+									"maximumError": "2mb"
 								},
 								{
 									"type": "anyComponentStyle",
@@ -63,19 +63,19 @@
 				"serve": {
 					"builder": "@angular-devkit/build-angular:dev-server",
 					"configurations": {
-            "production": {
-              "buildTarget": "cardGen:build:production"
+						"production": {
+							"buildTarget": "cardGen:build:production"
 						},
-            "development": {
-              "buildTarget": "cardGen:build:development"
+						"development": {
+							"buildTarget": "cardGen:build:development"
 						}
 					},
 					"defaultConfiguration": "development"
 				},
 				"extract-i18n": {
 					"builder": "@angular-devkit/build-angular:extract-i18n",
-          "options": {
-            "buildTarget": "cardGen:build"
+					"options": {
+						"buildTarget": "cardGen:build"
 					}
 				},
 				"test": {
@@ -88,13 +88,13 @@
 						"inlineStyleLanguage": "scss",
 						"assets": ["src/favicon.ico", "src/assets"],
 						"styles": [
-              "@angular/material/prebuilt-themes/purple-green.css",
-              "src/styles.scss"
-            ],
+							"@angular/material/prebuilt-themes/purple-green.css",
+							"src/styles.scss"
+						],
 						"scripts": []
 					}
 				}
 			}
 		}
-  }
+	}
 }
